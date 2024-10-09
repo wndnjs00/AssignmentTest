@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">AssignmentTest</string>
+
+
+    <string name="login_btn_text">로그인</string>
+    <string name="signup_btn_text">회원가입</string>
+
+
+    <string name="login_text">로그인</string>
+    <string name="signup_text">회원가입</string>
+    <string name="guide_text">안녕하세요\n서비스 이용을 위해 로그인을 해주세요.</string>
+    <string name="email_hint">이메일 주소</string>
+    <string name="password_hint">비밀번호</string>
+    <string name="password_check_hint">비밀번호 확인</string>
+    <string name="nickname_hint">닉네임</string>
+    <string name="password_found">비밀번호 찾기</string>
+    <string name="signup">회원가입</string>
+
+    <string name="terms_text">서비스 이용약관에 동의해주세요.</string>
+    <string name="checkbox_all_text">약관에 모두 동의</string>
+    <string name="terms_one_text">[필수] 만 14세 이상</string>
+    <string name="terms_two_text">[필수] 개인정보 수집 및 이용동의</string>
+
+    <string name="login_explain_text">로그인이 필요한 서비스입니다.</string>
+
+    <string name="complete_explain_text">닉네임님 환영합니다!</string>
+    <string name="logout_btn_text">로그아웃</string>
+    <string name="delete_account_btn_text">회원탈퇴</string>
+
+
+
 </resources>

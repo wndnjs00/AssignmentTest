@@ -1,0 +1,36 @@
+package com.example.assignmenttest
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.example.assignmenttest.databinding.FragmentCompleteBinding
+import com.example.assignmenttest.databinding.FragmentLoginBinding
+
+
+class CompleteFragment : Fragment() {
+    private val binding get() = _binding!!
+    private var _binding: FragmentCompleteBinding? = null
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentCompleteBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}
