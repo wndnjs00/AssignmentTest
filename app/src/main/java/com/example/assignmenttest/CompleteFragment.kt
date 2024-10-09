@@ -9,7 +9,7 @@ import com.example.assignmenttest.databinding.FragmentCompleteBinding
 import com.example.assignmenttest.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class CompleteFragment : Fragment() {
     private val binding get() = _binding!!
     private var _binding: FragmentCompleteBinding? = null

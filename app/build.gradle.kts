@@ -41,6 +41,9 @@ android {
         buildConfig = true
         viewBinding = true
     }
+    hilt{
+        enableAggregatingTask = false
+    }
 }
 
 dependencies {
@@ -72,5 +75,6 @@ dependencies {
     // Firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
+    implementation(libs.firebase.auth)
 
 }

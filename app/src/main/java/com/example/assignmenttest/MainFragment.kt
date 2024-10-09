@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.assignmenttest.databinding.FragmentMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainFragment : Fragment() {
     private val binding get() = _binding!!
     private var _binding: FragmentMainBinding? = null

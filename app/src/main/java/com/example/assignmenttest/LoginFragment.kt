@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.assignmenttest.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
     private val binding get() = _binding!!
     private var _binding: FragmentLoginBinding? = null
