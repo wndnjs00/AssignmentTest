@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
     id ("kotlin-parcelize")
+    id("com.google.gms.google-services")    // Add the Google services Gradle plugin
 }
 
 android {
@@ -67,4 +68,9 @@ dependencies {
     // Kotlin Coroutines & Flow
     implementation (libs.kotlinx.coroutines.core)
     implementation (libs.kotlinx.coroutines.android)
+
+    // Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+
 }
