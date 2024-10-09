@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.assignmenttest.databinding.FragmentCompleteBinding
 import com.example.assignmenttest.databinding.FragmentLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
 class CompleteFragment : Fragment() {

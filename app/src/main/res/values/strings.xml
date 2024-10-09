@@ -26,7 +26,8 @@
     <string name="complete_explain_text">닉네임님 환영합니다!</string>
     <string name="logout_btn_text">로그아웃</string>
     <string name="delete_account_btn_text">회원탈퇴</string>
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
