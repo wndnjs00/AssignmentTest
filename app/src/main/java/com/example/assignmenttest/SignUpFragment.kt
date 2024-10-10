@@ -45,6 +45,7 @@ class SignUpFragment : Fragment() {
 
         with(binding){
             signupBtn.setOnClickListener { signUpButtonClickListener() }
+            backButtonSignupIv.setOnClickListener { parentFragmentManager.popBackStack() }
 
             checkboxAll.setOnClickListener { onCheckedTerms(checkboxAll) }
             checkbox1.setOnClickListener { onCheckedTerms(checkbox1) }

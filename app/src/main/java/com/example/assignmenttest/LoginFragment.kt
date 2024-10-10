@@ -42,6 +42,12 @@ class LoginFragment : Fragment() {
 
         with(binding){
             loginBtn.setOnClickListener { loginButtonClickListener() }
+            signupTv.setOnClickListener {
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, SignUpFragment())
+                    .commit()
+            }
+            backButtonLoginIv.setOnClickListener { parentFragmentManager.popBackStack() }
 
             loginEmailEt.addTextChangedListener(textWatcher)
             loginPasswordEt.addTextChangedListener(textWatcher)
