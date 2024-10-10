@@ -149,14 +149,9 @@ class SignUpFragment : Fragment() {
 
             if (allFieldsValid) {
                 signupBtn.isEnabled = true
-                signupBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
-                    R.color.main_yellow
-                ))
+                signupBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.main_yellow))
             } else {
                 signupBtn.isEnabled = false
-                signupBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
-                    R.color.button_gray
-                ))
             }
         }
     }

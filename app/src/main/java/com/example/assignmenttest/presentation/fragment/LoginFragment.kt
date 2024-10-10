@@ -121,7 +121,6 @@ class LoginFragment : Fragment() {
                 loginBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.main_yellow))
             }else{
                 loginBtn.isEnabled = false
-                loginBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.button_gray))
             }
         }
     }
