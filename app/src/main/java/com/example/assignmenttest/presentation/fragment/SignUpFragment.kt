@@ -71,7 +71,7 @@ class SignUpFragment : Fragment() {
                 )
 
             }else{
-                signupErrorTv.text = "이용약관에 전부 동의해주세요."
+                signupErrorTv.text = getString(R.string.signup_checkbox_not_checked_text)
             }
         }
     }
@@ -84,17 +84,17 @@ class SignUpFragment : Fragment() {
                         val nickName = binding.signupNicknameEt.text.toString()
                         sharedViewModel.sharedNickName(nickName)
 
-                        Snackbar.make(binding.root, "회원가입이 완료되었습니다!", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, getString(R.string.signup_success_message), Snackbar.LENGTH_SHORT).show()
                         // 로그인 프래그먼트로 이동
                         parentFragmentManager.beginTransaction()
                             .replace(R.id.fragment_container, LoginFragment())
                             .commit()
                     }
                     is AuthUiState.Error ->{
-                        Snackbar.make(binding.root, "회원가입 실패", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, getString(R.string.signup_error_message), Snackbar.LENGTH_SHORT).show()
                     }
                     is AuthUiState.Loading -> {
-                        Snackbar.make(binding.root, "잠시만 기다려주세요..", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, getString(R.string.signup_loading_message), Snackbar.LENGTH_SHORT).show()
                     }
                     else -> {}
                 }
@@ -138,10 +138,10 @@ class SignUpFragment : Fragment() {
             val nicknameFlag = signupNicknameEt.text.toString().isNotEmpty()
 
             when {
-                !emailFlag -> signupErrorTv.text = "이메일 형식에 맞게 작성해주세요"
-                !passFlag -> signupErrorTv.text = "비밀번호는 영어,숫자,특수문자를 조합하여 8~16글자 이내로 입력해주세요"
-                !passCheckFlag -> signupErrorTv.text = "비밀번호를 동일하게 입력해주세요."
-                !nicknameFlag -> signupErrorTv.text = "닉네임을 입력해주세요."
+                !emailFlag -> signupErrorTv.text = getString(R.string.email_flag_message)
+                !passFlag -> signupErrorTv.text = getString(R.string.password_flag_message)
+                !passCheckFlag -> signupErrorTv.text = getString(R.string.password_check_flag_message)
+                !nicknameFlag -> signupErrorTv.text = getString(R.string.nickname_flag_message)
                 else -> signupErrorTv.text = null  // 모든 플래그가 만족하면 오류 메시지를 지움
             }
 

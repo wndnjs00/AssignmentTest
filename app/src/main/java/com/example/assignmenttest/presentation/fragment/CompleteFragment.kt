@@ -51,11 +51,11 @@ class CompleteFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch{
             sharedViewModel.nickName.collect{ nickName ->
                 if(!nickName.isNullOrEmpty()){
-                    binding.completeExplainTv.text = "\"${nickName}\"님 환영합니다!"
+                    binding.completeExplainTv.text = getString(R.string.welcome_message, nickName)
                 }else{
                     // nickname이 null이거나 비어있을 경우 email로 대체
                     sharedViewModel.email.collect{ email ->
-                        binding.completeExplainTv.text = "\"${email}\"님 환영합니다!"
+                        binding.completeExplainTv.text = getString(R.string.welcome_message, email)
                     }
                 }
             }
@@ -68,21 +68,21 @@ class CompleteFragment : Fragment() {
             viewModel.uiState.collect{ state ->
                 when(state){
                     is AuthUiState.Logout -> {
-                        Snackbar.make(binding.root, "로그아웃 되었습니다.", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, getString(R.string.logout_message), Snackbar.LENGTH_SHORT).show()
                         // LoginFragment로 이동
                         parentFragmentManager.beginTransaction()
                             .replace(R.id.fragment_container, LoginFragment())
                             .commit()
                     }
                     is AuthUiState.AccountDelete -> {
-                        Snackbar.make(binding.root, "계정이 삭제되었습니다.", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, getString(R.string.delete_account_message), Snackbar.LENGTH_SHORT).show()
                         // MainFragment로 이동
                         parentFragmentManager.beginTransaction()
                             .replace(R.id.fragment_container, MainFragment())
                             .commit()
                     }
                     is AuthUiState.Error -> {
-                        Snackbar.make(binding.root, "에러..", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, getString(R.string.error_message), Snackbar.LENGTH_SHORT).show()
                     }
                     else -> {}
                 }

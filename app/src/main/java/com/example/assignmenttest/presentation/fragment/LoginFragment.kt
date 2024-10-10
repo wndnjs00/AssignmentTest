@@ -75,17 +75,17 @@ class LoginFragment : Fragment() {
                         val email = binding.loginEmailEt.text.toString()
                         sharedViewModel.sharedEmail(email)
 
-                        Snackbar.make(binding.root, "로그인 성공!", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, getString(R.string.login_success_message), Snackbar.LENGTH_SHORT).show()
                         // CompleteFragment로 이동
                         parentFragmentManager.beginTransaction()
                             .replace(R.id.fragment_container, CompleteFragment())
                             .commit()
                     }
                     is AuthUiState.Error ->{
-                        Snackbar.make(binding.root, "로그인 실패", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, getString(R.string.login_error_message), Snackbar.LENGTH_SHORT).show()
                     }
                     is AuthUiState.Loading -> {
-                        Snackbar.make(binding.root, "잠시만 기다려주세요..", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, getString(R.string.login_loading_message), Snackbar.LENGTH_SHORT).show()
                     }
                     else -> {}
                 }
@@ -110,22 +110,18 @@ class LoginFragment : Fragment() {
             val passFlag = loginPasswordEt.text.toString().isNotEmpty() && Pattern.matches("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&.])[A-Za-z[0-9]$@$!%*#?&.]{8,16}$", loginPasswordEt.text.toString().trim())  // 영어,숫자,특수문자,글자 수는 8~16자인 비밀번호 패턴
 
             when {
-                !emailFlag -> loginErrorTv.text = "이메일 형식에 맞게 작성해주세요"
-                !passFlag -> loginErrorTv.text = "비밀번호는 영어,숫자,특수문자를 조합하여 8~16글자 이내로 입력해주세요"
+                !emailFlag -> loginErrorTv.text = getString(R.string.email_flag_message)
+                !passFlag -> loginErrorTv.text = getString(R.string.password_flag_message)
                 else -> loginErrorTv.text = null  // 모든 플래그가 만족하면 오류 메시지를 지움
             }
 
             val allFieldsValid = emailFlag && passFlag
             if (allFieldsValid){
                 loginBtn.isEnabled = true
-                loginBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
-                    R.color.main_yellow
-                ))
+                loginBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.main_yellow))
             }else{
                 loginBtn.isEnabled = false
-                loginBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
-                    R.color.button_gray
-                ))
+                loginBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.button_gray))
             }
         }
     }
