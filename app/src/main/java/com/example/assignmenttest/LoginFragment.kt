@@ -66,17 +66,17 @@ class LoginFragment : Fragment() {
                         val email = binding.loginEmailEt.text.toString()
                         sharedViewModel.sharedEmail(email)
 
-                        Snackbar.make(binding.loginEmailEt, "로그인 성공!", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, "로그인 성공!", Snackbar.LENGTH_SHORT).show()
                         // CompleteFragment로 이동
                         parentFragmentManager.beginTransaction()
                             .replace(R.id.fragment_container, CompleteFragment())
                             .commit()
                     }
                     is AuthUiState.Error ->{
-                        Snackbar.make(binding.loginEmailEt, "로그인 실패", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, "로그인 실패", Snackbar.LENGTH_SHORT).show()
                     }
                     is AuthUiState.Loading -> {
-                        Snackbar.make(binding.loginEmailEt, "잠시만 기다려주세요..", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, "잠시만 기다려주세요..", Snackbar.LENGTH_SHORT).show()
                     }
                     else -> {}
                 }

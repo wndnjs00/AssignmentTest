@@ -26,7 +26,6 @@ class AuthViewModel @Inject constructor(
 
 
 
-
     fun signUp(email: String, password: String, nickName: String){
         viewModelScope.launch{
             val result = authRepository.signUp(email, password, nickName)
@@ -62,6 +61,33 @@ class AuthViewModel @Inject constructor(
     fun sharedEmail(email: String){
         _email.value = email
     }
+
+
+    fun logout(){
+        viewModelScope.launch {
+            val result = authRepository.logout()
+
+            _uiState.value = if (result.isSuccess){
+                AuthUiState.Logout
+            }else{
+                AuthUiState.Error(result.exceptionOrNull()?.message ?: "Logout failed")
+            }
+        }
+    }
+
+
+    fun deleteAccount(){
+        viewModelScope.launch {
+            val result = authRepository.deleteAccount()
+
+            _uiState.value = if(result.isSuccess){
+                AuthUiState.AccountDelete
+            }else{
+                AuthUiState.Error(result.exceptionOrNull()?.message ?: "Account deletion failed")
+            }
+        }
+    }
+
 }
 
 
@@ -69,5 +95,7 @@ sealed class AuthUiState {
     object Idle : AuthUiState()
     object Loading : AuthUiState()
     object Success : AuthUiState()
+    object Logout : AuthUiState()
+    object AccountDelete : AuthUiState()
     data class Error(val message: String) : AuthUiState()
 }

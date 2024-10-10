@@ -28,4 +28,31 @@ class AuthRepositoryImpl @Inject constructor(
             Result.failure(e)
         }
     }
+
+
+    override suspend fun logout(): Result<Unit> {
+        return try{
+            firebaseAuth.signOut()  // 로그아웃
+            Result.success(Unit)
+        }catch (e: Exception){
+            Result.failure(e)
+        }
+    }
+
+
+    override suspend fun deleteAccount(): Result<Unit> {
+        return try{
+            val currentUser = firebaseAuth.currentUser
+            currentUser?.delete()?.addOnCompleteListener { task ->
+                if(task.isSuccessful){
+                    Result.success(Unit)
+                }else{
+                    Result.failure(Exception("Account deletion failed"))
+                }
+            }
+            Result.success(Unit)
+        }catch (e: Exception){
+            Result.failure(e)
+        }
+    }
 }

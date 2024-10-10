@@ -82,17 +82,17 @@ class SignUpFragment : Fragment() {
                         val nickName = binding.signupNicknameEt.text.toString()
                         sharedViewModel.sharedNickName(nickName)
 
-                        Snackbar.make(binding.signupEmailEt, "회원가입이 완료되었습니다!", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, "회원가입이 완료되었습니다!", Snackbar.LENGTH_SHORT).show()
                         // 로그인 프래그먼트로 이동
                         parentFragmentManager.beginTransaction()
                             .replace(R.id.fragment_container, LoginFragment())
                             .commit()
                     }
                     is AuthUiState.Error ->{
-                        Snackbar.make(binding.signupEmailEt, "회원가입 실패", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, "회원가입 실패", Snackbar.LENGTH_SHORT).show()
                     }
                     is AuthUiState.Loading -> {
-                        Snackbar.make(binding.signupEmailEt, "잠시만 기다려주세요..", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, "잠시만 기다려주세요..", Snackbar.LENGTH_SHORT).show()
                     }
                     else -> {}
                 }
