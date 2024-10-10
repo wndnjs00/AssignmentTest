@@ -1,10 +1,11 @@
-package com.example.assignmenttest
+package com.example.assignmenttest.presentation.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.assignmenttest.R
 import com.example.assignmenttest.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

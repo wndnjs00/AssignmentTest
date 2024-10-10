@@ -1,8 +1,7 @@
-package com.example.assignmenttest
+package com.example.assignmenttest.presentation.fragment
 
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Nickname
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.fragment.app.Fragment
@@ -14,8 +13,10 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.assignmenttest.databinding.FragmentLoginBinding
+import com.example.assignmenttest.AuthUiState
+import com.example.assignmenttest.R
 import com.example.assignmenttest.databinding.FragmentSignupBinding
+import com.example.assignmenttest.presentation.viewModel.AuthViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -148,10 +149,14 @@ class SignUpFragment : Fragment() {
 
             if (allFieldsValid) {
                 signupBtn.isEnabled = true
-                signupBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.main_yellow))
+                signupBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
+                    R.color.main_yellow
+                ))
             } else {
                 signupBtn.isEnabled = false
-                signupBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.button_gray))
+                signupBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
+                    R.color.button_gray
+                ))
             }
         }
     }

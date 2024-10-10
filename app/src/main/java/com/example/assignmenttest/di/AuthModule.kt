@@ -1,5 +1,7 @@
-package com.example.assignmenttest
+package com.example.assignmenttest.di
 
+import com.example.assignmenttest.data.repository.AuthRepository
+import com.example.assignmenttest.data.repository.AuthRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
@@ -19,7 +21,7 @@ object AuthModule {
 
     @Provides
     @Singleton
-    fun provideAuthRepository(firebaseAuth: FirebaseAuth) : AuthRepository{
+    fun provideAuthRepository(firebaseAuth: FirebaseAuth) : AuthRepository {
         return AuthRepositoryImpl(firebaseAuth)
     }
 }

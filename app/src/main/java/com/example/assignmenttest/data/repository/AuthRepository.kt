@@ -1,4 +1,4 @@
-package com.example.assignmenttest
+package com.example.assignmenttest.data.repository
 
 
 interface AuthRepository {

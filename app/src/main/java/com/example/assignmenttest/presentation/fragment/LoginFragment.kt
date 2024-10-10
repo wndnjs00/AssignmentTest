@@ -1,4 +1,4 @@
-package com.example.assignmenttest
+package com.example.assignmenttest.presentation.fragment
 
 import android.content.res.ColorStateList
 import android.os.Bundle
@@ -12,7 +12,10 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.assignmenttest.AuthUiState
+import com.example.assignmenttest.R
 import com.example.assignmenttest.databinding.FragmentLoginBinding
+import com.example.assignmenttest.presentation.viewModel.AuthViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -115,10 +118,14 @@ class LoginFragment : Fragment() {
             val allFieldsValid = emailFlag && passFlag
             if (allFieldsValid){
                 loginBtn.isEnabled = true
-                loginBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.main_yellow))
+                loginBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
+                    R.color.main_yellow
+                ))
             }else{
                 loginBtn.isEnabled = false
-                loginBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.button_gray))
+                loginBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
+                    R.color.button_gray
+                ))
             }
         }
     }

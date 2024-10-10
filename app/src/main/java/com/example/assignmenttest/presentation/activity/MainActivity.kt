@@ -1,7 +1,9 @@
-package com.example.assignmenttest
+package com.example.assignmenttest.presentation.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.assignmenttest.presentation.fragment.MainFragment
+import com.example.assignmenttest.R
 import com.example.assignmenttest.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

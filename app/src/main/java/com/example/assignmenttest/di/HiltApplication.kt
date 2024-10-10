@@ -1,4 +1,4 @@
-package com.example.assignmenttest
+package com.example.assignmenttest.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

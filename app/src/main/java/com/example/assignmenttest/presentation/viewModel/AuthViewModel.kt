@@ -1,7 +1,9 @@
-package com.example.assignmenttest
+package com.example.assignmenttest.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.assignmenttest.AuthUiState
+import com.example.assignmenttest.data.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
