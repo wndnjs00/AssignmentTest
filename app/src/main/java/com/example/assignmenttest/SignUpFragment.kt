@@ -81,7 +81,6 @@ class SignUpFragment : Fragment() {
                         // 로그인 프래그먼트로 이동
                         parentFragmentManager.beginTransaction()
                             .replace(R.id.fragment_container, LoginFragment())
-                            .addToBackStack(null)
                             .commit()
                     }
                     is AuthUiState.Error ->{

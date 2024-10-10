@@ -10,7 +10,7 @@
     <string name="signup_text">회원가입</string>
     <string name="guide_text">안녕하세요\n서비스 이용을 위해 로그인을 해주세요.</string>
     <string name="email_hint">이메일 주소</string>
-    <string name="password_hint">비밀번호</string>
+    <string name="password_hint">영어+숫자+특수문자 조합 8~16자리</string>
     <string name="password_check_hint">비밀번호 확인</string>
     <string name="nickname_hint">닉네임</string>
     <string name="password_found">비밀번호 찾기</string>
