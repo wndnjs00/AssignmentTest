@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.assignmenttest.databinding.FragmentLoginBinding
@@ -23,6 +24,7 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
 
     private val viewModel: AuthViewModel by viewModels()
+    private val sharedViewModel: AuthViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,6 +63,9 @@ class LoginFragment : Fragment() {
             viewModel.uiState.collect{ state ->
                 when(state){
                     is AuthUiState.Success ->{
+                        val email = binding.loginEmailEt.text.toString()
+                        sharedViewModel.sharedEmail(email)
+
                         Snackbar.make(binding.loginEmailEt, "로그인 성공!", Snackbar.LENGTH_SHORT).show()
                         // CompleteFragment로 이동
                         parentFragmentManager.beginTransaction()

@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.assignmenttest.databinding.FragmentLoginBinding
@@ -26,6 +27,7 @@ class SignUpFragment : Fragment() {
     private var _binding: FragmentSignupBinding? = null
 
     private val viewModel: AuthViewModel by viewModels()
+    private val sharedViewModel: AuthViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,6 +79,9 @@ class SignUpFragment : Fragment() {
             viewModel.uiState.collect{ state ->
                 when(state){
                     is AuthUiState.Success -> {
+                        val nickName = binding.signupNicknameEt.text.toString()
+                        sharedViewModel.sharedNickName(nickName)
+
                         Snackbar.make(binding.signupEmailEt, "회원가입이 완료되었습니다!", Snackbar.LENGTH_SHORT).show()
                         // 로그인 프래그먼트로 이동
                         parentFragmentManager.beginTransaction()

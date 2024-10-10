@@ -17,6 +17,15 @@ class AuthViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<AuthUiState>(AuthUiState.Idle)
     val uiState: StateFlow<AuthUiState> = _uiState.asStateFlow()
 
+    // nickName값 sharedViewModel로 공유하기위해
+    private val _nickName = MutableStateFlow<String?>(null)
+    val nickName: StateFlow<String?> = _nickName
+
+    val _email = MutableStateFlow<String?>(null)
+    val email: StateFlow<String?> = _email
+
+
+
 
     fun signUp(email: String, password: String, nickName: String){
         viewModelScope.launch{
@@ -43,6 +52,15 @@ class AuthViewModel @Inject constructor(
                 AuthUiState.Error(result.exceptionOrNull()?.message ?: "Unknown error")
             }
         }
+    }
+
+
+    fun sharedNickName(nickName: String){
+        _nickName.value = nickName
+    }
+
+    fun sharedEmail(email: String){
+        _email.value = email
     }
 }
 
