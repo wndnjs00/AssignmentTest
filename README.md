@@ -1,7 +1,7 @@
 # 로그인 & 회원가입 과제테스트
 - **Firebase Authentication**을 사용하여 로그인 & 회원가입 기능을 구현했습니다.
 - **Repositioy패턴**과 **MVVM패턴**을 적용하여 비지니스로직과 UI를 분리해, 향후 유지보수가 용이하도록 코드를 작성했습니다.
-- Activity는 Fragment보다 상대적으로 무겁기떄문에, **Single Activity Architecture(SAA)방식**을 적용하여 메모리효율성을 높였습니다.
+- Activity는 Fragment보다 상대적으로 무겁기때문에, **Single Activity Architecture(SAA)방식**을 적용하여 메모리효율성을 높였습니다.
 <br/><br/><br/>
 ### ⚙️적용기술
 <div align=left>
