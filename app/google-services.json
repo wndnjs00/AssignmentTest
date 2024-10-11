@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "264785213629",
+    "project_id": "assignmenttest-f5580",
+    "storage_bucket": "assignmenttest-f5580.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264785213629:android:a7a12582c868f62ea51fd4",
+        "android_client_info": {
+          "package_name": "com.example.assignmenttest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATIP1Oq-VLk-WhXlS9q8Jbm8IfgZhWgX0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
