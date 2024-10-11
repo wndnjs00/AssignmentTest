@@ -23,18 +23,16 @@
 
 - 이메일주소, 비밀번호, 비밀번호 확인, 닉네임 모두작성후 이용약관에 모두 동의해야 회원가입 가능
 - 이메일,비밀번호가 정해진 형식에 맞지않을경우 관련 에러메지지 띄움
-- 회원가입에 성공하면 Firebase Authentication에 회원가입한 사용자 저장후, 로그인화면으로 이동
+- 회원가입에 성공하면 Firebase Authentication에 사용자가 저장되며, 로그인화면으로 이동
 
-  
+  <br/><br/>
 ### 로그인
 <img src="https://github.com/user-attachments/assets/c72f7ce4-f4d4-4fd1-a921-3c0828908220" width="200" height="400">
 
 - 이메일,비밀번호가 정해진 형식에 맞지않을경우 관련 에러메지지 띄움
 - Firebase Authentication에 저장된 사용자일경우 로그인 성공
   
-
-
-
+<br/><br/>
 ### 로그아웃 & 회원탈퇴
 <p align="left">
   <img src="https://github.com/user-attachments/assets/907b043d-1fdc-4625-b76e-de49cb423c47" width="200" height="400" />
