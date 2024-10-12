@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.assignmenttest.R
 import com.example.assignmenttest.databinding.FragmentMainBinding
+import com.example.assignmenttest.replaceFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,19 +35,11 @@ class MainFragment : Fragment() {
 
 
     private fun moveToLoginFragment() {
-        val loginFragment = LoginFragment()
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, loginFragment)
-            .addToBackStack(null)
-            .commit()
+        replaceFragment(R.id.fragment_container, LoginFragment(), addToBackStack = true)
     }
 
     private fun moveToSignUpFragment() {
-        val signUpFragment = SignUpFragment()
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, signUpFragment)
-            .addToBackStack(null)
-            .commit()
+        replaceFragment(R.id.fragment_container, SignUpFragment(), addToBackStack = true)
     }
 
 

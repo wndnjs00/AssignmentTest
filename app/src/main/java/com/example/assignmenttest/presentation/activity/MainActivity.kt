@@ -24,9 +24,8 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun setMainFragment() {
-        val mainFragment = MainFragment()
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, mainFragment)
+            .replace(R.id.fragment_container, MainFragment())
             .commit()
     }
 }
