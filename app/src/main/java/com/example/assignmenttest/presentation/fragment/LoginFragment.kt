@@ -107,12 +107,12 @@ class LoginFragment : Fragment() {
     private fun loginCheckLogic(){
         with(binding){
             val emailFlag = loginEmailEt.text.toString().isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(loginEmailEt.text.toString().trim()).matches()
-            val passFlag = loginPasswordEt.text.toString().isNotEmpty() && Pattern.matches("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&.])[A-Za-z[0-9]$@$!%*#?&.]{8,16}$", loginPasswordEt.text.toString().trim())  // 영어,숫자,특수문자,글자 수는 8~16자인 비밀번호 패턴
+            val passFlag = loginPasswordEt.text.toString().isNotEmpty() && Pattern.matches("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&.])[A-Za-z[0-9]$@$!%*#?&.]{8,16}$", loginPasswordEt.text.toString().trim())
 
             when {
                 !emailFlag -> loginErrorTv.text = getString(R.string.email_flag_message)
                 !passFlag -> loginErrorTv.text = getString(R.string.password_flag_message)
-                else -> loginErrorTv.text = null  // 모든 플래그가 만족하면 오류 메시지를 지움
+                else -> loginErrorTv.text = null
             }
 
             val allFieldsValid = emailFlag && passFlag

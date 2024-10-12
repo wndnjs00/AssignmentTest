@@ -36,7 +36,7 @@ class MainFragment : Fragment() {
     private fun moveToLoginFragment() {
         val loginFragment = LoginFragment()
         parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, loginFragment)  // fragment_container는 MainActivity의 FrameLayout ID
+            .replace(R.id.fragment_container, loginFragment)
             .addToBackStack(null)
             .commit()
     }
@@ -44,7 +44,7 @@ class MainFragment : Fragment() {
     private fun moveToSignUpFragment() {
         val signUpFragment = SignUpFragment()
         parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, signUpFragment)  // fragment_container는 MainActivity의 FrameLayout ID
+            .replace(R.id.fragment_container, signUpFragment)
             .addToBackStack(null)
             .commit()
     }

@@ -133,7 +133,7 @@ class SignUpFragment : Fragment() {
     private fun signUpCheckLogic(){
         with(binding){
             val emailFlag = signupEmailEt.text.toString().isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(signupEmailEt.text.toString().trim()).matches()
-            val passFlag = signupPasswordEt.text.toString().isNotEmpty() && Pattern.matches("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&.])[A-Za-z[0-9]$@$!%*#?&.]{8,16}$", signupPasswordEt.text.toString().trim())  // 영어, 숫자, 특수문자, 글자 수는 8~16자인 비밀번호 패턴
+            val passFlag = signupPasswordEt.text.toString().isNotEmpty() && Pattern.matches("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&.])[A-Za-z[0-9]$@$!%*#?&.]{8,16}$", signupPasswordEt.text.toString().trim())
             val passCheckFlag = signupPasswordCheckEt.text.toString().isNotEmpty() && signupPasswordEt.text.toString() == signupPasswordCheckEt.text.toString()
             val nicknameFlag = signupNicknameEt.text.toString().isNotEmpty()
 
