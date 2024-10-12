@@ -15,6 +15,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.assignmenttest.AuthUiState
 import com.example.assignmenttest.R
+import com.example.assignmenttest.Validate
 import com.example.assignmenttest.databinding.FragmentSignupBinding
 import com.example.assignmenttest.presentation.viewModel.AuthViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -29,6 +30,7 @@ class SignUpFragment : Fragment() {
 
     private val viewModel: AuthViewModel by viewModels()
     private val sharedViewModel: AuthViewModel by activityViewModels()
+    private val validate = Validate()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -132,21 +134,20 @@ class SignUpFragment : Fragment() {
     // 유효성검사체크 로직 / 버튼 활성화
     private fun signUpCheckLogic(){
         with(binding){
-            val emailFlag = signupEmailEt.text.toString().isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(signupEmailEt.text.toString().trim()).matches()
-            val passFlag = signupPasswordEt.text.toString().isNotEmpty() && Pattern.matches("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&.])[A-Za-z[0-9]$@$!%*#?&.]{8,16}$", signupPasswordEt.text.toString().trim())
-            val passCheckFlag = signupPasswordCheckEt.text.toString().isNotEmpty() && signupPasswordEt.text.toString() == signupPasswordCheckEt.text.toString()
-            val nicknameFlag = signupNicknameEt.text.toString().isNotEmpty()
+            val emailFlag = validate.isEmailValid(signupEmailEt.text.toString())
+            val passFlag = validate.isPasswordValid(signupPasswordEt.text.toString())
+            val passCheckFlag = validate.isPasswordCheckValid(signupPasswordEt.text.toString(), signupPasswordCheckEt.text.toString())
+            val nicknameFlag = validate.isNicknameValid(signupNicknameEt.text.toString())
 
-            when {
-                !emailFlag -> signupErrorTv.text = getString(R.string.email_flag_message)
-                !passFlag -> signupErrorTv.text = getString(R.string.password_flag_message)
-                !passCheckFlag -> signupErrorTv.text = getString(R.string.password_check_flag_message)
-                !nicknameFlag -> signupErrorTv.text = getString(R.string.nickname_flag_message)
-                else -> signupErrorTv.text = null  // 모든 플래그가 만족하면 오류 메시지를 지움
+            signupErrorTv.text = when {
+                !emailFlag -> getString(R.string.email_flag_message)
+                !passFlag -> getString(R.string.password_flag_message)
+                !passCheckFlag -> getString(R.string.password_check_flag_message)
+                !nicknameFlag -> getString(R.string.nickname_flag_message)
+                else -> null
             }
 
             val allFieldsValid = emailFlag && passFlag && passCheckFlag && nicknameFlag
-
             if (allFieldsValid) {
                 signupBtn.isEnabled = true
                 signupBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.main_yellow))

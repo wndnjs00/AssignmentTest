@@ -14,6 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.assignmenttest.AuthUiState
 import com.example.assignmenttest.R
+import com.example.assignmenttest.Validate
 import com.example.assignmenttest.databinding.FragmentLoginBinding
 import com.example.assignmenttest.presentation.viewModel.AuthViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -28,6 +29,7 @@ class LoginFragment : Fragment() {
 
     private val viewModel: AuthViewModel by viewModels()
     private val sharedViewModel: AuthViewModel by activityViewModels()
+    private val validate = Validate()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -102,17 +104,16 @@ class LoginFragment : Fragment() {
         override fun afterTextChanged(s: Editable?) {}
     }
 
-
     // 유효성검사체크 로직 / 버튼 활성화
     private fun loginCheckLogic(){
         with(binding){
-            val emailFlag = loginEmailEt.text.toString().isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(loginEmailEt.text.toString().trim()).matches()
-            val passFlag = loginPasswordEt.text.toString().isNotEmpty() && Pattern.matches("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&.])[A-Za-z[0-9]$@$!%*#?&.]{8,16}$", loginPasswordEt.text.toString().trim())
+            val emailFlag = validate.isEmailValid(loginEmailEt.text.toString())
+            val passFlag = validate.isPasswordValid(loginPasswordEt.text.toString())
 
-            when {
-                !emailFlag -> loginErrorTv.text = getString(R.string.email_flag_message)
-                !passFlag -> loginErrorTv.text = getString(R.string.password_flag_message)
-                else -> loginErrorTv.text = null
+            loginErrorTv.text = when{
+                !emailFlag -> getString(R.string.email_flag_message)
+                !passFlag -> getString(R.string.password_flag_message)
+                else -> null
             }
 
             val allFieldsValid = emailFlag && passFlag
