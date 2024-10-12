@@ -14,8 +14,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.assignmenttest.AuthUiState
 import com.example.assignmenttest.R
+import com.example.assignmenttest.Validate
 import com.example.assignmenttest.databinding.FragmentLoginBinding
 import com.example.assignmenttest.presentation.viewModel.AuthViewModel
+import com.example.assignmenttest.replaceFragment
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -28,6 +30,7 @@ class LoginFragment : Fragment() {
 
     private val viewModel: AuthViewModel by viewModels()
     private val sharedViewModel: AuthViewModel by activityViewModels()
+    private val validate = Validate()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,9 +49,7 @@ class LoginFragment : Fragment() {
         with(binding){
             loginBtn.setOnClickListener { loginButtonClickListener() }
             signupTv.setOnClickListener {
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, SignUpFragment())
-                    .commit()
+                replaceFragment(R.id.fragment_container, SignUpFragment())
             }
             backButtonLoginIv.setOnClickListener { parentFragmentManager.popBackStack() }
 
@@ -77,9 +78,7 @@ class LoginFragment : Fragment() {
 
                         Snackbar.make(binding.root, getString(R.string.login_success_message), Snackbar.LENGTH_SHORT).show()
                         // CompleteFragment로 이동
-                        parentFragmentManager.beginTransaction()
-                            .replace(R.id.fragment_container, CompleteFragment())
-                            .commit()
+                        replaceFragment(R.id.fragment_container,CompleteFragment())
                     }
                     is AuthUiState.Error ->{
                         Snackbar.make(binding.root, getString(R.string.login_error_message), Snackbar.LENGTH_SHORT).show()
@@ -102,17 +101,16 @@ class LoginFragment : Fragment() {
         override fun afterTextChanged(s: Editable?) {}
     }
 
-
     // 유효성검사체크 로직 / 버튼 활성화
     private fun loginCheckLogic(){
         with(binding){
-            val emailFlag = loginEmailEt.text.toString().isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(loginEmailEt.text.toString().trim()).matches()
-            val passFlag = loginPasswordEt.text.toString().isNotEmpty() && Pattern.matches("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&.])[A-Za-z[0-9]$@$!%*#?&.]{8,16}$", loginPasswordEt.text.toString().trim())  // 영어,숫자,특수문자,글자 수는 8~16자인 비밀번호 패턴
+            val emailFlag = validate.isEmailValid(loginEmailEt.text.toString())
+            val passFlag = validate.isPasswordValid(loginPasswordEt.text.toString())
 
-            when {
-                !emailFlag -> loginErrorTv.text = getString(R.string.email_flag_message)
-                !passFlag -> loginErrorTv.text = getString(R.string.password_flag_message)
-                else -> loginErrorTv.text = null  // 모든 플래그가 만족하면 오류 메시지를 지움
+            loginErrorTv.text = when{
+                !emailFlag -> getString(R.string.email_flag_message)
+                !passFlag -> getString(R.string.password_flag_message)
+                else -> null
             }
 
             val allFieldsValid = emailFlag && passFlag
